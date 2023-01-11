@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Fecha de ingreso</title>
+    </head>
+    <body>
+    	<form th:action="@{/fechaingreso/procesar}" th:object="${fechaIngresoDTO}" method="post">
+    		<div>
+    			<label for="fechaIngreso">Fecha de ingreso</label>
+    			<input type="date" th:field="*{fechaIngreso}" id="fechaIngresoId"></input>
+    			<small th:if="${#fields.hasErrors('fechaIngreso')}" 
+    				th:errors="*{fechaIngreso}"></small>
+    		</div>
+    		<div>
+    			<button type="submit" class="button">Enviar</button>
+    		</div>
+    	</form>
+    	<p th:text="'La fecha de pago es: ' + ${#dates.format(fechaPagoResultado, 'dd-MM-yyyy')}" th:if="${fechaPagoResultado != null}"></p>
+    </body>
+</html>
